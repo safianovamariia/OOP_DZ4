@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DZ4_ex_4.MainPage">
+
+    <Grid RowDefinitions="Auto, *">
+        <HorizontalStackLayout Grid.Row="0" Spacing="10" Padding="10">
+            <Button Text="Add Product" Clicked="OnAddClicked" />
+            <Button Text="Remove Product" Clicked="OnRemoveClicked" />
+        </HorizontalStackLayout>
+
+        <CollectionView Grid.Row="1" x:Name="ProductsList" SelectionMode="Single">
+            <CollectionView.Header>
+                <Grid ColumnDefinitions="1.5*, *, *, *, 2.5*" Padding="10" BackgroundColor="LightGray">
+                    <Label Grid.Column="0" Text="Name" FontAttributes="Bold" />
+                    <Label Grid.Column="1" Text="Price" FontAttributes="Bold" />
+                    <Label Grid.Column="2" Text="Country" FontAttributes="Bold" />
+                    <Label Grid.Column="3" Text="Pack Date" FontAttributes="Bold" />
+                    <Label Grid.Column="4" Text="Details (Extra Info)" FontAttributes="Bold" />
+                </Grid>
+            </CollectionView.Header>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid ColumnDefinitions="1.5*, *, *, *, 2.5*" Padding="10">
+                        <Label Grid.Column="0" Text="{Binding Name}" />
+                        <Label Grid.Column="1" Text="{Binding Price}" />
+                        <Label Grid.Column="2" Text="{Binding Country}" />
+                        <Label Grid.Column="3" Text="{Binding PackDate, StringFormat='{0:dd.MM.yyyy}'}" />
+                        <Label Grid.Column="4" Text="{Binding Details}" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>
